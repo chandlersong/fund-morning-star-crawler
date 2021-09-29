@@ -1,7 +1,6 @@
 version: '2'
 services:
-  mysql:
-    container_name: morningstar
+  morningstarDB:
     restart: always
     image: mysql:8.0.26
     environment:
@@ -12,4 +11,6 @@ services:
     ports:
       - "3308:3306"
     volumes:
-      - ./morningstar:/var/lib/mysql
+      - db_data:/var/lib/mysql
+volumes:
+  db_data:

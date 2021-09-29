@@ -57,7 +57,7 @@ def identify_verification_code(chrome_driver, id="checkcodeImg"):
 # 模拟手动输入账号密码登录
 def mock_login_site(chrome_driver, site_url, redirect_url=None):
     site_url = site_url if redirect_url == None else site_url + \
-        '?ReturnUrl=' + redirect_url
+                                                     '?ReturnUrl=' + redirect_url
     chrome_driver.get(site_url)
     time.sleep(2)
     from selenium.webdriver.support import expected_conditions as EC
@@ -101,7 +101,7 @@ def mock_login_site(chrome_driver, site_url, redirect_url=None):
     return True
 
 
-def login_morning_star(redirect_url, is_cookies_login=False):
+def login_morning_star(redirect_url, is_cookies_login=True):
     from selenium import webdriver
     chrome_options = webdriver.ChromeOptions()
     chrome_options.add_argument("--no-sandbox")

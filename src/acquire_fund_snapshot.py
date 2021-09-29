@@ -53,9 +53,9 @@ def text_to_be_present_in_element(locator, text, next_page_locator):
 
 def get_fund_list():
     morning_fund_selector_url = "https://www.morningstar.cn/fundselect/default.aspx"
-    chrome_driver = login_morning_star(morning_fund_selector_url, False)
+    chrome_driver = login_morning_star(morning_fund_selector_url, True)
     # 定义起始页码
-    page_num = 443
+    page_num = 1
     page_count = 25
     page_num_total = math.ceil(int(chrome_driver.find_element_by_xpath(
         '/html/body/form/div[8]/div/div[4]/div[3]/div[2]/span').text) / page_count)
@@ -118,13 +118,14 @@ def get_fund_list():
                 # 基金分类
                 fund_cat.append(tds_text[2].string)
                 # 三年评级
-                rating = get_star_count(tds_text[3].find_all('img')[0]['src'])
-                fund_rating_3.append(rating)
+                rating_3 = get_star_count(tds_text[3].find_all('img')[0]['src'])
+                fund_rating_3.append(rating_3)
                 # 5年评级
-                rating = get_star_count(tds_text[4].find_all('img')[0]['src'])
-                fund_rating_5.append(rating)
+                rating_5 = get_star_count(tds_text[4].find_all('img')[0]['src'])
+                fund_rating_5.append(rating_5)
                 # 今年以来回报(%)
                 return_value = tds_nume[3].string if tds_nume[3].string != '-' else None
+
                 rate_of_return.append(return_value)
 
         print('数据准备完毕')

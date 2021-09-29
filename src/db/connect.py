@@ -1,4 +1,3 @@
-
 import pymysql
 import os
 from dotenv import load_dotenv
@@ -11,8 +10,9 @@ def connect():
     env_db_user = os.getenv('db_user')
     env_db_password = os.getenv('db_password')
     connect = pymysql.connect(
-        host=env_db_host, user=env_db_user, password=env_db_password, db=env_db_name, charset='utf8')
+        host=env_db_host, user=env_db_user, password=env_db_password, db=env_db_name, port=3308, charset='utf8')
     return connect
+
 
 def connect_dict():
     load_dotenv()
