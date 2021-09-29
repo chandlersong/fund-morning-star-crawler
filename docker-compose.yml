@@ -1,0 +1,15 @@
+version: '2'
+services:
+  mysql:
+    container_name: morningstar
+    restart: always
+    image: mysql:8.0.26
+    environment:
+      MYSQL_ROOT_PASSWORD: morningstar
+      MYSQL_DATABASE: morningstar
+      MYSQL_USER: morningstar
+      MYSQL_PASSWORD: morningstar
+    ports:
+      - "3308:3306"
+    volumes:
+      - ./morningstar:/var/lib/mysql
